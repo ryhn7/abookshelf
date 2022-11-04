@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="./assets/"
+  data-template="vertical-menu-template-free">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>abookshelf | Dashboard</title>
+  <meta name="description" content="" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/vendor/fonts/boxicons.css" />
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="./assets/vendor/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="./assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="./assets/css/logo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/toast.css">
+  <script src="./assets/js/config.js"></script>
+</head>
+
+<body onload="infoBook()">
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Layout container -->
+      <side-bar></side-bar>
+      <div class="layout-page">
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <!-- Intro  -->
+            <div class="column">
+              <h3>Hello <span class="text-primary">Rayhan</span>,</h3>
+              <h5>Welcome to abookshelf, a place where you can track your books</h5>
+            </div>
+            <!-- Toast Success  -->
+            <div class="toastx" id="toast">
+              <div class="toastx-content">
+                <i class="fas fa-solid fa-check check"></i>
+
+                <div class="message">
+                  <span class="text text-1">Success</span>
+                  <span class="text text-2">Your changes has been saved</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-xmark close" id="close"></i>
+
+              <div class="progress" id="progress"></div>
+            </div>
+            <br>
+
+            <!-- Info Books  -->
+            <div class="row">
+              <div class="col-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                      <div class="d-flex flex-sm-column flex-row align-items-start ">
+                        <div class="card-title mb-4">
+                          <span class="badge bg-label-info rounded-pill">Total of Books</span>
+                        </div>
+                        <div class="mt-4" id="total">
+                          <h2>0</h2>
+                        </div>
+                      </div>
+                      <div class="justif-content-center">
+                        <img src="./assets/img/illustrations/book.png" height="150" alt="all-book">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                      <div class="d-flex flex-sm-column flex-row align-items-start">
+                        <div class="card-title mb-4">
+                          <span class="badge bg-label-warning rounded-pill">Unread Books</span>
+                        </div>
+                        <div class="mt-4" id="unread">
+                          <h2>0</h2>
+                        </div>
+                      </div>
+                      <div class="justif-content-center">
+                        <img src="./assets/img/illustrations/unread.png" height="150" alt="book-uncompleted">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                      <div class="d-flex flex-sm-column flex-row align-items-start">
+                        <div class="card-title mb-4">
+                          <span class="badge bg-label-success rounded-pill">Completed Books</span>
+                        </div>
+                        <div class="mt-4" id="completed">
+                          <h2>0</h2>
+                        </div>
+                      </div>
+                      <div class="justif-content-center">
+                        <img src="./assets/img/illustrations/done.png" height="150" alt="book-completed">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <!-- Form Input Book -->
+            <div class="row" id="inputForm">
+              <div class="col-xl">
+                <div class="card mb-4">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 mx-auto">Add Book Collection</h5>
+                  </div>
+                  <div class="card-body">
+                    <form class="form" action="#" id="form">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="title" placeholder="Title"
+                          aria-describedby="titleHelp" required />
+                        <label for="title">Title</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="author" placeholder="Author"
+                          aria-describedby="authorHelp" required />
+                        <label for="author">Author</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="years" placeholder="Years"
+                          aria-describedby="yearsHelp" required />
+                        <label for="years">Year</label>
+                      </div>
+
+                      <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="isCompleted" />
+                        <label class="form-check-label" for="isCompleted"> Completed </label>
+                      </div>
+
+                      <div class="d-grid gap-2 col-lg-6 mx-auto">
+                        <input type="submit" value="Add to Shelf" name="Submit" class="btn btn-primary btn-lg"
+                          onclick="toast()" id="btn">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- / Content -->
+
+
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+    </div>
+  </div>
+  <!-- / Layout wrapper -->
+
+
+  <script src="./js/sidebar.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
